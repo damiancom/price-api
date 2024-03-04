@@ -97,7 +97,7 @@ class PriceControllerAdapterTest {
     when(priceModel.getBrand()).thenReturn(mock(BrandModel.class));
 
     when(priceService.retrievePriceForBrandProductAndDateApplication(anyLong(), anyLong(), any(LocalDateTime.class)))
-        .thenReturn(Optional.ofNullable(priceModel));
+        .thenReturn(Optional.of(priceModel));
 
     Optional<PriceResponse> priceResponse =
         priceControllerAdapter.retrievePriceForBrandProductAndDateApplication(brandId, productId, applicationDate);
