@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 import org.technical.exam.priceapi.application.rest.response.ErrorResponse;
 
 @SpringBootTest
@@ -87,6 +88,19 @@ class ControllerErrorHandlerTest {
     assertEquals(HttpStatus.BAD_REQUEST.value(), responseEntity.getBody().getStatus());
     assertEquals(HttpStatus.BAD_REQUEST.getReasonPhrase(), responseEntity.getBody().getError());
     assertEquals(illegalArgumentException.getMessage(), responseEntity.getBody().getDetail());
+  }
+
+  @Test
+  @DisplayName("Should respond Not Found when receiving a NoResourceFoundException.")
+  void shouldRespondNotFoundWhenReceivingNoResourceFoundException() {
+    NoResourceFoundException noResourceFoundException = mock(NoResourceFoundException.class);
+    ResponseEntity<ErrorResponse> responseEntity = controllerErrorHandler.handleNoResourceFoundException(noResourceFoundException);
+
+    assertEquals(HttpStatus.NOT_FOUND, responseEntity.getStatusCode());
+    assertNotNull(responseEntity.getBody());
+    assertEquals(HttpStatus.NOT_FOUND.value(), responseEntity.getBody().getStatus());
+    assertEquals(HttpStatus.NOT_FOUND.getReasonPhrase(), responseEntity.getBody().getError());
+    assertEquals(noResourceFoundException.getMessage(), responseEntity.getBody().getDetail());
   }
 
 }
