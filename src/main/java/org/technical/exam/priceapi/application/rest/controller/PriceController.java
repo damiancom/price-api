@@ -6,7 +6,6 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import java.awt.print.Book;
 import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -35,6 +34,8 @@ public class PriceController {
       @ApiResponse(responseCode = "200", description = "Found the price",
           content = { @Content(mediaType = "application/json",
               schema = @Schema(implementation = PriceResponse.class)) }),
+      @ApiResponse(responseCode = "204", description = "Price not found",
+          content = @Content),
       @ApiResponse(responseCode = "400", description = "Invalid provided parameters",
           content = @Content),
       @ApiResponse(responseCode = "404", description = "Price not found",
