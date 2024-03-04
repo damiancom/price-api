@@ -41,4 +41,40 @@ class PriceMapperTest {
     assertEquals(priceModel.getBrand().getId(), priceResponse.getBrandId());
   }
 
+  @DisplayName("Should return PriceResponse with null brandId when provided PriceModel has BrandModel with null id.")
+  @Test
+  void shouldReturnPriceResponseWithNullBrandIdWhenProvidedPriceModelHasBrandModelWithNullId() {
+    BrandModel brandModel = mock(BrandModel.class);
+    PriceModel priceModel = mock(PriceModel.class);
+
+    when(priceModel.getBrand()).thenReturn(brandModel);
+    when(priceModel.getBrand().getId()).thenReturn(null);
+
+    PriceResponse priceResponse = priceMapper.toResponse(priceModel);
+
+    assertEquals(priceModel.getId(), priceResponse.getPriceId());
+    assertEquals(priceModel.getPrice(), priceResponse.getPrice());
+    assertEquals(priceModel.getProductId(), priceResponse.getProductId());
+    assertEquals(priceModel.getEndDate(), priceResponse.getEndDate());
+    assertEquals(priceModel.getStartDate(), priceResponse.getStartDate());
+    assertNull(priceResponse.getBrandId());
+  }
+
+  @Test
+  @DisplayName("Should return PriceResponse with null brandId when provided PriceModel has null BrandModel.")
+  void shouldReturnPriceResponseWithNullBrandIdWhenProvidedPriceModelHasNullBrandModel() {
+    PriceModel priceModel = mock(PriceModel.class);
+
+    when(priceModel.getBrand()).thenReturn(null);
+
+    PriceResponse priceResponse = priceMapper.toResponse(priceModel);
+
+    assertEquals(priceModel.getId(), priceResponse.getPriceId());
+    assertEquals(priceModel.getPrice(), priceResponse.getPrice());
+    assertEquals(priceModel.getProductId(), priceResponse.getProductId());
+    assertEquals(priceModel.getEndDate(), priceResponse.getEndDate());
+    assertEquals(priceModel.getStartDate(), priceResponse.getStartDate());
+    assertNull(priceResponse.getBrandId());
+  }
+
 }
