@@ -16,7 +16,6 @@ import lombok.experimental.FieldDefaults;
 @Entity
 @Table(name = "prices")
 @Getter
-@Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Price {
 
@@ -32,6 +31,7 @@ public class Price {
   private Double price;
   private String curr;
 
+  @Setter
   @ManyToOne
   @JoinColumn(name = "brand_id")
   private Brand brand;
