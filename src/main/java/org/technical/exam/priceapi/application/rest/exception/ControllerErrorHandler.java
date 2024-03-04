@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 import org.technical.exam.priceapi.application.rest.response.ErrorResponse;
 
 @Slf4j
@@ -61,6 +62,20 @@ public class ControllerErrorHandler {
         .build();
 
     return new ResponseEntity<>(apiResponse, HttpStatus.BAD_REQUEST);
+  }
+
+  @ExceptionHandler(NoResourceFoundException.class)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  public ResponseEntity<ErrorResponse> handleNoResourceFoundException(Exception e) {
+    log.error("[NOT_FOUND] {}", e.getMessage(), e);
+
+    ErrorResponse apiResponse = ErrorResponse.builder()
+        .status(HttpStatus.NOT_FOUND.value())
+        .error(HttpStatus.NOT_FOUND.getReasonPhrase())
+        .detail(e.getMessage())
+        .build();
+
+    return new ResponseEntity<>(apiResponse, HttpStatus.NOT_FOUND);
   }
 
 }

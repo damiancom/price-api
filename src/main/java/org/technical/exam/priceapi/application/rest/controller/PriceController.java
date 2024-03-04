@@ -38,8 +38,9 @@ public class PriceController {
           content = @Content),
       @ApiResponse(responseCode = "400", description = "Invalid provided parameters",
           content = @Content),
-      @ApiResponse(responseCode = "404", description = "Price not found",
-          content = @Content) })
+      @ApiResponse(responseCode = "404", description = "Resource was not found",
+          content = @Content)
+       })
   @GetMapping("/prices")
   public ResponseEntity<PriceResponse> getPrice(
       @RequestParam("brand_id") @Parameter(description = "brand id of price to be searched") @NonNull Long brandId,
