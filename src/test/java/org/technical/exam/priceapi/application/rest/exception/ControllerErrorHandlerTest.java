@@ -23,7 +23,7 @@ class ControllerErrorHandlerTest {
 
   @Test
   @DisplayName("Should respond Internal Server Error when receiving an exception.")
-  public void shouldRespondInternalServerErrorWhenReceivingException() {
+  void shouldRespondInternalServerErrorWhenReceivingException() {
     Exception genericException = mock(Exception.class);
 
     ResponseEntity<ErrorResponse> responseEntity = controllerErrorHandler.handleException(genericException);

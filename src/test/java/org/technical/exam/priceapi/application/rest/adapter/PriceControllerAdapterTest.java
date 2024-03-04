@@ -33,7 +33,7 @@ class PriceControllerAdapterTest {
 
   @Test
   @DisplayName("Should return an empty Optional when given null parameters.")
-  public void shouldReturnEmptyOptionalWhenGivenNullParameters() {
+  void shouldReturnEmptyOptionalWhenGivenNullParameters() {
 
     when(priceService.retrievePriceForBrandProductAndDateApplication(anyLong(), anyLong(), any(LocalDateTime.class)))
         .thenReturn(Optional.empty());

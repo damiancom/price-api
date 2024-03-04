@@ -101,7 +101,7 @@ class PriceJpaAdapterTest {
 
   @Test
   @DisplayName("Should return a list of PriceModel with multiple elements when the repository returns a list with multiple elements.")
-  public void shouldReturnListOfPriceModelWithMultipleElementsWhenRepositoryReturnsListWithMultipleElements() {
+  void shouldReturnListOfPriceModelWithMultipleElementsWhenRepositoryReturnsListWithMultipleElements() {
     Long brandId = 1L;
     Long productId = 1L;
     LocalDateTime applicationDate = LocalDateTime.now();
