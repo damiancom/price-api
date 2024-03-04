@@ -34,8 +34,8 @@ class PriceControllerTest {
   private PriceControllerAdapter priceControllerAdapter;
 
   @Test
-  @DisplayName("Should return status 404 Not Found when all parameters are null.")
-  void shouldReturnStatus404NotFoundWhenAllParametersAreNull() {
+  @DisplayName("Should return status 204 No content when all parameters are null.")
+  void shouldReturnStatus204NoContentWhenAllParametersAreNull() {
 
     when(priceControllerAdapter.retrievePriceForBrandProductAndDateApplication(null, null, null))
         .thenReturn(Optional.empty());
@@ -43,12 +43,12 @@ class PriceControllerTest {
     var response = priceController.getPrice(null, null, null);
 
     verify(priceControllerAdapter).retrievePriceForBrandProductAndDateApplication(null, null, null);
-    assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
   }
 
   @Test
-  @DisplayName("Should return status 404 Not Found when receiving an empty Optional from the adapter.")
-  void shouldReturnStatus404NotFoundWhenReceivingEmptyOptionalFromAdapter() {
+  @DisplayName("Should return status 204 No content when receiving an empty Optional from the adapter.")
+  void shouldReturnStatus204NoContentWhenReceivingEmptyOptionalFromAdapter() {
 
     Long brandId = 1L;
     Long productId = 2L;
@@ -60,7 +60,7 @@ class PriceControllerTest {
     var response = priceController.getPrice(brandId, productId, applicationDate);
 
     verify(priceControllerAdapter).retrievePriceForBrandProductAndDateApplication(brandId, productId, applicationDate);
-    assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
   }
 
   @Test
