@@ -129,7 +129,7 @@ curl -X GET "http://localhost:8080/api/v1/prices/"
 Can explore the Swagger documentation integrated into the project by accessing the following path: 
 http://localhost:8080/swagger-ui/index.html
 
-<img alt="swagger" src="C:\Users\Damia\OneDrive\Imágenes\Capturas de pantalla\swagger.png"/>
+![swagger](https://github.com/damiancom/price-api/assets/18606948/7d414ba3-2b11-4ba9-ac70-26a2543d30a3)
 
 ## __Test reports__
 
@@ -146,4 +146,4 @@ build/reports/jacoco/test/html/index.html
 
 ### The project currently has a test coverage of 96%
 
-<img alt="jacocoTestReport" src="C:\Users\Damia\OneDrive\Imágenes\Capturas de pantalla\jacocoTestReport.png"/>
+![jacocoTestReport](https://github.com/damiancom/price-api/assets/18606948/7d55cd56-3b9c-426e-a55e-90dde1687e85)
