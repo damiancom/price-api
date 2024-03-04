@@ -1,5 +1,12 @@
 package org.technical.exam.priceapi.application.rest.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import java.awt.print.Book;
 import java.time.LocalDateTime;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -23,11 +30,21 @@ public class PriceController {
 
   final PriceControllerPort priceAdapter;
 
+  @Operation(summary = "Get the price of a product by its id, brandId and its effective date")
+  @ApiResponses(value = {
+      @ApiResponse(responseCode = "200", description = "Found the price",
+          content = { @Content(mediaType = "application/json",
+              schema = @Schema(implementation = PriceResponse.class)) }),
+      @ApiResponse(responseCode = "400", description = "Invalid provided parameters",
+          content = @Content),
+      @ApiResponse(responseCode = "404", description = "Price not found",
+          content = @Content) })
   @GetMapping("/")
   public ResponseEntity<PriceResponse> getPrice(
-      @RequestParam("brand_id") @NonNull Long brandId,
-      @RequestParam("product_id") @NonNull Long productId,
-      @RequestParam("application_date") @NonNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime applicationDate) {
+      @RequestParam("brand_id") @Parameter(description = "brand id of price to be searched") @NonNull Long brandId,
+      @RequestParam("product_id") @Parameter(description = "product id of price to be searched") @NonNull Long productId,
+      @RequestParam("application_date") @Parameter(description = "Effective date for the price") @NonNull @DateTimeFormat(iso =
+          DateTimeFormat.ISO.DATE_TIME) LocalDateTime applicationDate) {
 
     return priceAdapter
         .retrievePriceForBrandProductAndDateApplication(brandId, productId, applicationDate)
