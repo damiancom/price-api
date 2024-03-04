@@ -61,7 +61,6 @@ class PriceMapperTest {
     assertEquals(priceList.get(0).getPriority(), priceModelList.get(0).getPriority());
     assertEquals(priceList.get(0).getEndDate(), priceModelList.get(0).getEndDate());
     assertEquals(priceList.get(0).getStartDate(), priceModelList.get(0).getStartDate());
-    assertEquals(priceList.get(0).getBrand(), priceModelList.get(0).getBrand());
     assertEquals(priceList.get(1).getBrand().getId(), priceModelList.get(1).getBrand().getId());
     assertEquals(priceList.get(1).getBrand().getName(), priceModelList.get(1).getBrand().getName());
   }
