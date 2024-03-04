@@ -7,12 +7,14 @@
 
 ## __Technologies__
 - Java 17
+- Gradle
 - Spring Boot
 - Lombok
 - H2
 - Junit
 - Mockito
-- Gradle
+- Jacoco
+- Swagger
 
 ## __Run the application__
 You should clone the repository. You can use the following command
@@ -120,3 +122,28 @@ curl -X GET "http://localhost:8080/api/v1/prices/"
   "detail": "An error occurred"
 }
 ```
+
+## __Swagger - OpenAPI definition__
+
+#### The project includes documentation for the exposed endpoint through Swagger.
+Can explore the Swagger documentation integrated into the project by accessing the following path: 
+http://localhost:8080/swagger-ui/index.html
+
+<img alt="swagger" src="C:\Users\Damia\OneDrive\Imágenes\Capturas de pantalla\swagger.png"/>
+
+## __Test reports__
+
+#### The project includes the Jacoco library, allowing us to generate a report on the tests present in the project.
+To generate the report, you can do so from the project by executing the command:
+
+```
+gradle test jacocoTestReport
+```
+Once the execution is complete, you can view the results at
+```
+build/reports/jacoco/test/html/index.html
+```
+
+### The project currently has a test coverage of 96%
+
+<img alt="jacocoTestReport" src="C:\Users\Damia\OneDrive\Imágenes\Capturas de pantalla\jacocoTestReport.png"/>
