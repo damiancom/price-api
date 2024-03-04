@@ -1,6 +1,7 @@
 package org.technical.exam.priceapi.application.rest.controller.unit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.mock;
@@ -79,6 +80,7 @@ class PriceControllerTest {
 
     verify(priceControllerAdapter).retrievePriceForBrandProductAndDateApplication(brandId, productId, applicationDate);
     assertEquals(HttpStatus.OK, response.getStatusCode());
+    assertNotNull(response.getBody());
     assertEquals(priceResponse.get().getPriceId(), response.getBody().getPriceId());
     assertEquals(priceResponse.get().getPrice(), response.getBody().getPrice());
     assertEquals(priceResponse.get().getBrandId(), response.getBody().getBrandId());

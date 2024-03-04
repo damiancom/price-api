@@ -1,6 +1,7 @@
 package org.technical.exam.priceapi.application.rest.controller.integration;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import jakarta.transaction.Transactional;
 import java.time.LocalDateTime;
@@ -28,7 +29,9 @@ class PriceControllerTest {
   void shouldReturnCorrectPriceForRequestAt1000OnDay14ForProduct35455AndBrand1() {
     LocalDateTime applicationDate = LocalDateTime.of(2020, 6, 14, 10, 0);
     ResponseEntity<PriceResponse> response = priceController.getPrice(1L, 35455L, applicationDate);
+    assertNotNull(response);
     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    assertNotNull(response.getBody());
     assertThat(response.getBody().getPrice()).isEqualTo(35.50);
   }
 
@@ -38,7 +41,9 @@ class PriceControllerTest {
   void shouldReturnCorrectPriceForRequestAt1600OnDay14ForProduct35455AndBrand1() {
     LocalDateTime applicationDate = LocalDateTime.of(2020, 6, 14, 16, 0);
     ResponseEntity<PriceResponse> response = priceController.getPrice(1L, 35455L, applicationDate);
+    assertNotNull(response);
     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    assertNotNull(response.getBody());
     assertThat(response.getBody().getPrice()).isEqualTo(25.45);
   }
 
@@ -48,7 +53,9 @@ class PriceControllerTest {
   void shouldReturnCorrectPriceForRequestAt2100OnDay14ForProduct35455AndBrand1() {
     LocalDateTime applicationDate = LocalDateTime.of(2020, 6, 14, 21, 0);
     ResponseEntity<PriceResponse> response = priceController.getPrice(1L, 35455L, applicationDate);
+    assertNotNull(response);
     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    assertNotNull(response.getBody());
     assertThat(response.getBody().getPrice()).isEqualTo(35.50);
   }
 
@@ -58,7 +65,9 @@ class PriceControllerTest {
   void shouldReturnCorrectPriceForRequestAt1000OnDay15ForProduct35455AndBrand1() {
     LocalDateTime applicationDate = LocalDateTime.of(2020, 6, 15, 10, 0);
     ResponseEntity<PriceResponse> response = priceController.getPrice(1L, 35455L, applicationDate);
+    assertNotNull(response);
     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    assertNotNull(response.getBody());
     assertThat(response.getBody().getPrice()).isEqualTo(30.50);
   }
 
@@ -68,7 +77,9 @@ class PriceControllerTest {
   void shouldReturnCorrectPriceForRequestAt2100OnDay16ForProduct35455AndBrand1() {
     LocalDateTime applicationDate = LocalDateTime.of(2020, 6, 16, 21, 0);
     ResponseEntity<PriceResponse> response = priceController.getPrice(1L, 35455L, applicationDate);
+    assertNotNull(response);
     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+    assertNotNull(response.getBody());
     assertThat(response.getBody().getPrice()).isEqualTo(38.95);
   }
 
