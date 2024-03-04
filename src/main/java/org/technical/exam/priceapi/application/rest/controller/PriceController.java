@@ -25,7 +25,7 @@ import org.technical.exam.priceapi.domain.port.PriceControllerPort;
 @RestController
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@RequestMapping("/prices")
+@RequestMapping("/api/${api.version}")
 public class PriceController {
 
   final PriceControllerPort priceAdapter;
@@ -39,7 +39,7 @@ public class PriceController {
           content = @Content),
       @ApiResponse(responseCode = "404", description = "Price not found",
           content = @Content) })
-  @GetMapping("/")
+  @GetMapping("/prices")
   public ResponseEntity<PriceResponse> getPrice(
       @RequestParam("brand_id") @Parameter(description = "brand id of price to be searched") @NonNull Long brandId,
       @RequestParam("product_id") @Parameter(description = "product id of price to be searched") @NonNull Long productId,
